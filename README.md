@@ -130,6 +130,8 @@ e.g. Chat Message
     avatar: 'https://facebook.github.io/react/img/logo_og.png',
   },
   image: 'https://facebook.github.io/react/img/logo_og.png',
+  // You can also add a video prop:
+  video: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
   // Any additional custom parameters are passed through
 }
 ```
@@ -173,6 +175,7 @@ e.g. System Message
 - **`renderSystemMessage`** _(Function)_ - Custom system message
 - **`onLongPress`** _(Function(`context`, `message`))_ - Callback when a message bubble is long-pressed; default is to show an ActionSheet with "Copy Text" (see [example using `showActionSheetWithOptions()`](https://github.com/FaridSafi/react-native-gifted-chat/blob/master@%7B2017-09-25%7D/src/Bubble.js#L96-L119))
 - **`inverted`** _(Bool)_ - Reverses display order of `messages`; default is `true`
+- **`renderUsernameOnMessage`** _(Bool)_ - Indicate whether to show the user's username inside the message bubble; default is `false`
 - **`renderMessage`** _(Function)_ - Custom message container
 - **`renderMessageText`** _(Function)_ - Custom message text
 - **`renderMessageImage`** _(Function)_ - Custom message image

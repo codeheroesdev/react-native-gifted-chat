@@ -16,11 +16,11 @@ import LoadEarlier from './LoadEarlier';
 import Message from './Message';
 import Color from './Color';
 
-export default class MessageContainer extends React.Component {
+export default class MessageContainer extends React.PureComponent {
 
   state = {
     showScrollBottom: false,
-  }
+  };
 
   componentDidMount() {
     if (this.props.messages.length === 0) {
@@ -28,12 +28,8 @@ export default class MessageContainer extends React.Component {
     }
   }
 
-  shouldComponentUpdate(nextProps) {
-    const next = nextProps.messages;
-    const current = this.props.messages;
-    return (
-      next.length !== current.length || next.extraData !== current.extraData || next.loadEarlier !== current.loadEarlier
-    );
+  componentWillUnmount() {
+    this.detachKeyboardListeners();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -91,7 +87,7 @@ export default class MessageContainer extends React.Component {
 
   scrollToBottom = () => {
     this.scrollTo({ offset: 0, animated: 'true' });
-  }
+  };
 
   handleOnScroll = (event) => {
     if (event.nativeEvent.contentOffset.y > this.props.scrollToBottomOffset) {
@@ -99,7 +95,7 @@ export default class MessageContainer extends React.Component {
     } else {
       this.setState({ showScrollBottom: false });
     }
-  }
+  };
 
   renderRow = ({ item, index }) => {
     if (!item._id && item._id !== 0) {
@@ -145,7 +141,8 @@ export default class MessageContainer extends React.Component {
       return (
         <TouchableOpacity onPress={this.scrollToBottom} hitSlop={{ top: 5, left: 5, right: 5, bottom: 5 }}>
           {this.props.scrollToBottomComponent}
-        </TouchableOpacity>);
+        </TouchableOpacity>
+      );
     }
     return scrollToBottomComponent;
   }

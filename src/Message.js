@@ -37,6 +37,8 @@ export default class Message extends React.Component {
   shouldComponentUpdate(nextProps) {
     const next = nextProps.currentMessage;
     const current = this.props.currentMessage;
+    const { nextMessage } = this.props;
+    const nextPropsMessage = nextProps.nextMessage;
     return (
       next.send !== current.send ||
       next.received !== current.received ||
@@ -44,7 +46,8 @@ export default class Message extends React.Component {
       next.createdAt !== current.createdAt ||
       next.text !== current.text ||
       next.image !== current.image ||
-      next.video !== current.video
+      next.video !== current.video ||
+      nextMessage !== nextPropsMessage
     );
   }
 
