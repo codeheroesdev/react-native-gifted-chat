@@ -62,35 +62,35 @@
 ## Example
 
 ```jsx
-import React from 'react'
-import { GiftedChat } from 'react-native-gifted-chat'
+import React from "react";
+import { GiftedChat } from "react-native-gifted-chat";
 
 class Example extends React.Component {
   state = {
-    messages: [],
-  }
+    messages: []
+  };
 
   componentWillMount() {
     this.setState({
       messages: [
         {
           _id: 1,
-          text: 'Hello developer',
+          text: "Hello developer",
           createdAt: new Date(),
           user: {
             _id: 2,
-            name: 'React Native',
-            avatar: 'https://placeimg.com/140/140/any',
-          },
-        },
-      ],
-    })
+            name: "React Native",
+            avatar: "https://placeimg.com/140/140/any"
+          }
+        }
+      ]
+    });
   }
 
   onSend(messages = []) {
     this.setState(previousState => ({
-      messages: GiftedChat.append(previousState.messages, messages),
-    }))
+      messages: GiftedChat.append(previousState.messages, messages)
+    }));
   }
 
   render() {
@@ -99,10 +99,10 @@ class Example extends React.Component {
         messages={this.state.messages}
         onSend={messages => this.onSend(messages)}
         user={{
-          _id: 1,
+          _id: 1
         }}
       />
-    )
+    );
   }
 }
 ```
@@ -130,8 +130,6 @@ e.g. Chat Message
     avatar: 'https://facebook.github.io/react/img/logo_og.png',
   },
   image: 'https://facebook.github.io/react/img/logo_og.png',
-  // You can also add a video prop:
-  video: 'http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
   // Any additional custom parameters are passed through
 }
 ```
@@ -149,7 +147,6 @@ e.g. System Message
 ```
 
 ## Props
-
 
 - **`messages`** _(Array)_ - Messages to display
 - **`text`** _(String)_ - Input text; default is `undefined`, but if specified, it will override GiftedChat's internal state (e.g. for redux; [see notes below](#notes-for-redux))
@@ -179,9 +176,7 @@ e.g. System Message
 - **`renderMessage`** _(Function)_ - Custom message container
 - **`renderMessageText`** _(Function)_ - Custom message text
 - **`renderMessageImage`** _(Function)_ - Custom message image
-- **`renderMessageVideo`** _(Function)_ - Custom message video
 - **`imageProps`** _(Object)_ - Extra props to be passed to the [`<Image>`](https://facebook.github.io/react-native/docs/image.html) component created by the default `renderMessageImage`
-- **`videoProps`** _(Object)_ - Extra props to be passed to the [`<Video>`](https://github.com/react-native-community/react-native-video) component created by the default `renderMessageVideo`
 - **`lightboxProps`** _(Object)_ - Extra props to be passed to the `MessageImage`'s [Lightbox](https://github.com/oblador/react-native-lightbox)
 - **`renderCustomView`** _(Function)_ - Custom view inside the bubble
 - **`renderDay`** _(Function)_ - Custom day above a message
@@ -214,9 +209,10 @@ e.g. System Message
     ]}
   />
   ```
-* **`scrollToBottom`** _(Bool)_ - Enables the scrollToBottom Component (Default is false)    
-* **`scrollToBottomComponent`** _(Function)_ - Custom Scroll To Bottom Component container  
-* **`scrollToBottomOffset`** _(Integer)_ - Custom Height Offset upon which to begin showing Scroll To Bottom Component (Default is 200)  
+
+* **`scrollToBottom`** _(Bool)_ - Enables the scrollToBottom Component (Default is false)
+* **`scrollToBottomComponent`** _(Function)_ - Custom Scroll To Bottom Component container
+* **`scrollToBottomOffset`** _(Integer)_ - Custom Height Offset upon which to begin showing Scroll To Bottom Component (Default is 200)
 
 ## Imperative methods
 
